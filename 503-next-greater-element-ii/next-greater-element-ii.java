@@ -5,7 +5,7 @@ class Solution {
         for(int i=0;i<n;i++){ 
             ans[i]=-1; 
         } 
-        Stack<Integer> stack = new Stack<>();
+       Deque<Integer> stack = new ArrayDeque<>();
         for(int i=2*n-1;i>=0;i--){
             int index = i % n;
             while(!stack.isEmpty() && stack.peek() <= nums[index]){

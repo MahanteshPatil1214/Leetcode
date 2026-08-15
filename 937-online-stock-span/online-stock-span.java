@@ -1,0 +1,25 @@
+import java.util.ArrayDeque;
+import java.util.Deque;
+
+class StockSpanner {
+    // Stack stores pairs: [price, span]
+    private final Deque<int[]> stack;
+
+    public StockSpanner() {
+        stack = new ArrayDeque<>();
+    }
+    
+    public int next(int price) {
+        int span = 1;
+        
+        // Pop all previous prices less than or equal to the current price
+        while (!stack.isEmpty() && stack.peek()[0] <= price) {
+            span += stack.pop()[1];
+        }
+        
+        // Push the current price and accumulated span
+        stack.push(new int[]{price, span});
+        
+        return span;
+    }
+}

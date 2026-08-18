@@ -1,6 +1,6 @@
 class Solution {
     public int calculate(String s) {
-        Stack<Integer> stack = new Stack<>();
+        Deque<Integer> stack = new ArrayDeque<>();
         int num=0;
         char op='+';
         for(int i=0;i<=s.length();i++){

@@ -1,6 +1,6 @@
 class Solution {
     public int calculate(String s) {
-        Deque<Integer> stack = new ArrayDeque<>();
+        Stack<Integer> stack = new Stack<>();
         int result = 0;
         int sign = 1; // 1 represents '+', -1 represents '-'
         int n = s.length();

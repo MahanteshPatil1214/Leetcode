@@ -3,7 +3,7 @@ class Solution {
         return build(s).equals(build(t));
     }
     private String build(String str){
-        Stack<Character> stack = new Stack<>();
+        Deque<Character> stack = new ArrayDeque<>();
         for(char c : str.toCharArray()){
             if(c == '#'){
                 if(!stack.isEmpty()){

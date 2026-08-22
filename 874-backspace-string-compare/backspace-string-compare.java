@@ -1,24 +1,40 @@
 class Solution {
     public boolean backspaceCompare(String s, String t) {
-        return build(s).equals(build(t));
-    }
-    private String build(String str){
-        Deque<Character> stack = new ArrayDeque<>();
-        for(char c : str.toCharArray()){
-            if(c == '#'){
-                if(!stack.isEmpty()){
-                    stack.pop();
-                }
-            }
-            else{
-                stack.push(c);
+     int i = s.length()-1;
+     int j = t.length()-1;
+     int skipS =0,skipT=0;
+     while(i>=0 || j>=0){
+        while(i>=0){
+            if(s.charAt(i) == '#'){
+                skipS++;
+                i--;
+            }else if (skipS>0){
+                skipS--;
+                i--;
+            }else{
+                break;
             }
         }
-
-        StringBuilder result = new StringBuilder();
-        for(char c : stack){
-            result.append(c);
+        while(j>=0){
+            if(t.charAt(j) == '#'){
+                skipT++;
+                j--;
+            }else if (skipT>0){
+                skipT--;
+                j--;
+            }else{
+                break;
+            }
         }
-        return result.toString();
+        if(i>=0 && j>=0){
+            if(s.charAt(i) != t.charAt(j)) return false;
+        }else{
+            if(i>=0 || j>=0) return false;
+        }
+        i--;
+        j--;
     }
+     return true;
+        
+   }
 }

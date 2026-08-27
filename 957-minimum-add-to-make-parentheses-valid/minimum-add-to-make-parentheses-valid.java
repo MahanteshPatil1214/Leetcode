@@ -1,6 +1,6 @@
 class Solution {
     public int minAddToMakeValid(String s) {
-        Stack<Character> sb = new Stack<>();
+        Deque<Character> sb = new ArrayDeque<>();
         for(char c : s.toCharArray()){
             if(!sb.isEmpty()){
                 char last = sb.peek();
